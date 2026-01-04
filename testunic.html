@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Teste Unice - Suport complet pentru elevi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Stilizare completă în index.html */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #e63946;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 150px 0 80px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e9ff 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Materii Navigation */
+        .materii-nav {
+            background-color: white;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+        }
+
+        .materii-nav .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 10px 25px;
+            background-color: var(--light-gray);
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Sectiuni materii */
+        .materie-section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--light-gray);
+        }
+
+        .section-icon {
+            background-color: rgba(67, 97, 238, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .section-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        /* Teorie */
+        .teorie-box {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .teorie-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .teorie-title i {
+            margin-right: 10px;
+        }
+
+        .teorie-content {
+            line-height: 1.8;
+        }
+
+        .teorie-content ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .teorie-content li {
+            margin-bottom: 8px;
+        }
+
+        .teorie-content code {
+            background-color: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* Teste PDF */
+        .teste-pdf {
+            margin-top: 40px;
+        }
+
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .pdf-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .pdf-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .pdf-download {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .pdf-download i {
+            margin-right: 8px;
+        }
+
+        .pdf-download:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            color: #adb5bd;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .materie-section {
+                padding: 25px;
+            }
+            
+            .pdf-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Portal Teste Unice</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#mate">Matematică</a></li>
+                    <li><a href="#info">Informatică</a></li>
+                    <li><a href="#engleza">Engleză</a></li>
+                    <li><a href="#fizica">Fizică</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Portal complet pentru pregătirea elevilor</h1>
+            <p>Teorie esențială, teste unice și rezolvări pentru Matematică, Informatică, Engleză și Fizică. Totul într-un singur loc!</p>
+            <a href="#mate" class="btn">Începe să înveți</a>
+        </div>
+    </section>
+
+    <!-- Navigare rapidă între materii -->
+    <div class="materii-nav">
+        <div class="container">
+            <button class="nav-btn active" onclick="scrollToSection('mate')">Matematică</button>
+            <button class="nav-btn" onclick="scrollToSection('info')">Informatică</button>
+            <button class="nav-btn" onclick="scrollToSection('engleza')">Engleză</button>
+            <button class="nav-btn" onclick="scrollToSection('fizica')">Fizică</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- MATEMATICĂ -->
+        <section id="mate" class="materie-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h2 class="section-title">Matematică</h2>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-square-root-alt"></i> Radicali de ordinul n</h3>
+                <div class="teorie-content">
+                    <p><strong>Definiție:</strong> Radicalul de ordin n dintr-un număr a este numărul b astfel încât bⁿ = a.</p>
+                    <p><strong>Proprietăți:</strong></p>
+                    <ul>
+                        <li>ⁿ√(a·b) = ⁿ√a · ⁿ√b</li>
+                        <li>ⁿ√(a/b) = ⁿ√a / ⁿ√b (b ≠ 0)</li>
+                        <li>(ⁿ√a)ᵐ = ⁿ√(aᵐ)</li>
+                        <li>ⁿ√ᵐ√a = ᵐⁿ√a</li>
+                    </ul>
+                    <p><strong>Exemplu:</strong> √50/√2 = √(50/2) = √25 = 5</p>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-list-alt"></i> Logaritmi</h3>
+                <div class="teorie-content">
+                    <p><strong>Definiție:</strong> logₐb = c ⇔ aᶜ = b, unde a > 0, a ≠ 1, b > 0.</p>
+                    <p><strong>Proprietăți:</strong></p>
+                    <ul>
+                        <li>logₐ(x·y) = logₐx + logₐy</li>
+                        <li>logₐ(x/y) = logₐx - logₐy</li>
+                        <li>logₐxᵖ = p·logₐx</li>
+                        <li>logₐb = 1/(log_b a)</li>
+                        <li>Schimbarea bazei: logₐb = log_c b / log_c a</li>
+                    </ul>
+                    <p><strong>Exemplu:</strong> log₂8 + log₂4 = 3 + 2 = 5</p>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-infinity"></i> Numere complexe</h3>
+                <div class="teorie-content">
+                    <p><strong>Forma algebrică:</strong> z = a + bi, unde i² = -1</p>
+                    <ul>
+                        <li><strong>Modul:</strong> |z| = √(a² + b²)</li>
+                        <li><strong>Conjugat:</strong> z̅ = a - bi</li>
+                        <li><strong>Forma trigonometrică:</strong> z = r(cosθ + i sinθ), unde r = |z|, θ = arg(z)</li>
+                    </ul>
+                    <p><strong>Exemplu:</strong> Pentru z = 3 + 4i: |z| = √(3² + 4²) = 5</p>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-chart-line"></i> Funcții injective, surjective, bijective</h3>
+                <div class="teorie-content">
+                    <ul>
+                        <li><strong>Injectivă:</strong> f(x₁) = f(x₂) ⇒ x₁ = x₂ (orice valoare din codomeniu are cel mult o preimagine)</li>
+                        <li><strong>Surjectivă:</strong> ∀y∈B, ∃x∈A astfel încât f(x) = y (codomeniul = imaginea)</li>
+                        <li><strong>Bijectivă:</strong> Este atât injectivă cât și surjectivă ⇒ inversabilă</li>
+                    </ul>
+                    <p><strong>Exemplu:</strong> f: R→R, f(x) = 2x+1 este bijectivă</p>
+                </div>
+            </div>
+
+            <!-- Teste PDF Matematică -->
+            <div class="teste-pdf">
+                <h3 class="teorie-title"><i class="fas fa-file-pdf"></i> Teste Unice - Matematică</h3>
+                <div class="pdf-grid">
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 1 - Ianuarie</div>
+                        <p>Subiecte: radicali, logaritmi, numere complexe, funcții</p>
+                        <a href="pdf/matematica/Test_Unic_Matematica_Ianuarie_fara_diacritice (1).pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 2</div>
+                        <p>Subiecte: radicali, logaritmi, numere complexe, ecuații în C</p>
+                        <a href="pdf/matematica/Test_Unic_Matematica_2_fara_diacritice (1).pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 3</div>
+                        <p>Subiecte: radicali, logaritmi, forma trigonometrică, funcții</p>
+                        <a href="pdf/matematica/Test_Unic_Matematica_3_fara_diacritice.pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMATICĂ -->
+        <section id="info" class="materie-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h2 class="section-title">Informatică</h2>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-code"></i> Operatori în C++</h3>
+                <div class="teorie-content">
+                    <p><strong>Operatori aritmetici:</strong> +, -, *, /, % (modulo)</p>
+                    <p><strong>Operatori de atribuire:</strong> =, +=, -=, *=, /=</p>
+                    <p><strong>Operatori de comparație:</strong> ==, !=, >, <, >=, <=</p>
+                    <p><strong>Operatori logici:</strong> && (și), || (sau), ! (not)</p>
+                    <p><strong>Exemplu:</strong> 5 + 3 * 2 = 11 (înmulțirea are prioritate)</p>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-code-branch"></i> Structuri decizionale (if)</h3>
+                <div class="teorie-content">
+                    <p><strong>Sintaxa:</strong></p>
+                    <pre><code>if (condiție) {
+    // instrucțiuni dacă condiția este adevărată
+} else {
+    // instrucțiuni dacă condiția este falsă
+}</code></pre>
+                    <p><strong>Exemplu:</strong></p>
+                    <pre><code>int n = 5;
+if (n % 2 == 0) {
+    cout << "Par";
+} else {
+    cout << "Impar";
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-redo"></i> Structuri repetitive</h3>
+                <div class="teorie-content">
+                    <p><strong>while:</strong> Se execută cât timp condiția este adevărată</p>
+                    <pre><code>int i = 1;
+while (i <= 5) {
+    cout << i << " ";
+    i++;
+}</code></pre>
+                    
+                    <p><strong>for:</strong> Pentru un număr cunoscut de pași</p>
+                    <pre><code>for(int i = 1; i <= 5; i++) {
+    cout << i << " ";
+}</code></pre>
+                    
+                    <p><strong>do...while:</strong> Se execută cel puțin o dată</p>
+                    <pre><code>int x = 5;
+do {
+    cout << x << " ";
+    x--;
+} while(x > 2);</code></pre>
+                </div>
+            </div>
+
+            <!-- Teste PDF Informatică -->
+            <div class="teste-pdf">
+                <h3 class="teorie-title"><i class="fas fa-file-pdf"></i> Teste Unice - Informatică</h3>
+                <div class="pdf-grid">
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 1 din 3</div>
+                        <p>Grila, cod de analizat, problemă cu structuri repetitive</p>
+                        <a href="pdf/informatica/Test_Unic_Informatica_1_fara_diacritice (1).pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 2 din 3</div>
+                        <p>Operatori, bucle, problemă cu numere pare și maxim</p>
+                        <a href="pdf/informatica/Test_Unic_Informatica_2_fara_diacritice (1).pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 3 din 3</div>
+                        <p>Tipuri de date, bucle, problemă cu numere prime și divizori</p>
+                        <a href="pdf/informatica/Test_Unic_Informatica_3_fara_diacritice.pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGLEZĂ -->
+        <section id="engleza" class="materie-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h2 class="section-title">Engleză</h2>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-book"></i> Vocabular</h3>
+                <div class="teorie-content">
+                    <p><strong>Haine (Clothes):</strong> coat, jacket, scarf, gloves, hat, sweater</p>
+                    <p><strong>Caracteristici oameni (Personality):</strong> kind, friendly, confident, brave, attractive</p>
+                    <p><strong>Locuri în Veneția:</strong> canals, buildings, museums, festivals</p>
+                    <p><strong>Exemple:</strong></p>
+                    <ul>
+                        <li>She is very <strong>kind</strong>.</li>
+                        <li>He is wearing a warm <strong>coat</strong>.</li>
+                        <li>Venice has many famous <strong>canals</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-clock"></i> Timpul viitor (Future Tense)</h3>
+                <div class="teorie-content">
+                    <p><strong>Future Simple (will):</strong> Pentru decizii spontane, predicții</p>
+                    <ul>
+                        <li>I <strong>will travel</strong> to Italy next year.</li>
+                        <li>She <strong>will not forget</strong> your birthday.</li>
+                    </ul>
+                    
+                    <p><strong>Going to:</strong> Pentru planuri, intenții</p>
+                    <ul>
+                        <li>Look at the clouds! It <strong>is going to rain</strong>.</li>
+                    </ul>
+                    
+                    <p><strong>Future Continuous:</strong> Pentru acțiuni în desfășurare la un moment viitor</p>
+                    <ul>
+                        <li>Tomorrow at 8 PM, I <strong>will be studying</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-question-circle"></i> Question Tags</h3>
+                <div class="teorie-content">
+                    <p>Folosite pentru a cere confirmare. Regulă: propoziție afirmativă → tag negativ și invers.</p>
+                    <ul>
+                        <li>You like winter festivals, <strong>don't you</strong>?</li>
+                        <li>He is not coming today, <strong>is he</strong>?</li>
+                        <li>She can speak English, <strong>can't she</strong>?</li>
+                        <li>They are coming later, <strong>aren't they</strong>?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-exchange-alt"></i> Conditional Sentences</h3>
+                <div class="teorie-content">
+                    <p><strong>Type 1 (Real):</strong> If + present, will + verb</p>
+                    <ul>
+                        <li>If it snows, we <strong>will stay</strong> at home.</li>
+                        <li>If you study, you <strong>will pass</strong> the test.</li>
+                    </ul>
+                    
+                    <p><strong>Type 2 (Unreal present):</strong> If + past simple, would + verb</p>
+                    <ul>
+                        <li>If I were you, I <strong>would not worry</strong>.</li>
+                    </ul>
+                    
+                    <p><strong>Type 3 (Unreal past):</strong> If + past perfect, would have + verb</p>
+                    <ul>
+                        <li>If I had known about the festival, I <strong>would have gone</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Teste PDF Engleză -->
+            <div class="teste-pdf">
+                <h3 class="teorie-title"><i class="fas fa-file-pdf"></i> Teste Unice - Engleză</h3>
+                <div class="pdf-grid">
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 1 din 3</div>
+                        <p>Vocabular, future tense, question tags, conditional sentences</p>
+                        <a href="pdf/engleza/Test_Unic_Engleza_1_fara_diacritice (1).pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 2 din 3</div>
+                        <p>Vocabular, future forms, reading comprehension, writing</p>
+                        <a href="pdf/engleza/Test_Unic_Engleza_2_fara_diacritice.pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                    <div class="pdf-card">
+                        <div class="pdf-title">Testul 3 din 3</div>
+                        <p>Word formation, future forms, conditionals, reading, writing</p>
+                        <a href="pdf/engleza/Test_Unic_Engleza_3_fara_diacritice.pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FIZICĂ -->
+        <section id="fizica" class="materie-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <h2 class="section-title">Fizică - Termodinamică</h2>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-fire"></i> Transformări termodinamice</h3>
+                <div class="teorie-content">
+                    <p><strong>Gazul ideal:</strong> pV = nRT (ecuația de stare)</p>
+                    
+                    <p><strong>Transformări:</strong></p>
+                    <ul>
+                        <li><strong>Izotermă:</strong> T = constant ⇒ pV = constant</li>
+                        <li><strong>Izobară:</strong> p = constant ⇒ V/T = constant</li>
+                        <li><strong>Izocoră:</strong> V = constant ⇒ p/T = constant</li>
+                        <li><strong>Adiabată:</strong> Q = 0 ⇒ pVᵞ = constant, unde γ = Cₚ/Cᵥ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-bolt"></i> Lucrul mecanic și energia internă</h3>
+                <div class="teorie-content">
+                    <p><strong>Lucru mecanic (L):</strong></p>
+                    <ul>
+                        <li>Izobar: L = p·ΔV</li>
+                        <li>Izoterm: L = nRT·ln(V₂/V₁)</li>
+                        <li>General: L = ∫p dV (aria de sub curbă în diagrama p-V)</li>
+                    </ul>
+                    
+                    <p><strong>Energie internă (U):</strong> ΔU = Q - L (Primul principiu al termodinamicii)</p>
+                    <ul>
+                        <li>Gaz monoatomic: U = (3/2)nRT</li>
+                        <li>Gaz diatomic: U = (5/2)nRT</li>
+                    </ul>
+                    
+                    <p><strong>Căldura (Q):</strong> Q = nCΔT</p>
+                </div>
+            </div>
+
+            <div class="teorie-box">
+                <h3 class="teorie-title"><i class="fas fa-recycle"></i> Cicluri termodinamice</h3>
+                <div class="teorie-content">
+                    <p><strong>Definiție:</strong> Succesiune de transformări după care gazul revine în starea inițială.</p>
+                    <p><strong>Lucru mecanic pe ciclu:</strong> L_ciclu = aria ciclului în diagrama p-V</p>
+                    <p><strong>Variația energiei interne pe ciclu:</strong> ΔU_ciclu = 0</p>
+                    <p><strong>Randament:</strong> η = L / Q₁, unde Q₁ este căldura primită</p>
+                </div>
+            </div>
+
+            <!-- Teste PDF Fizică -->
+            <div class="teste-pdf">
+                <h3 class="teorie-title"><i class="fas fa-file-pdf"></i> Teste Unice - Fizică</h3>
+                <div class="pdf-grid">
+                    <div class="pdf-card">
+                        <div class="pdf-title">Subiectul III - Problema 1</div>
+                        <p>Gaz ideal monoatomic, transformări izocoră și izotermă</p>
+                        <a href="pdf/fizica/Test_Unic_Fizica_Subiectul_III_1_fara_diacritice (1).pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                    <div class="pdf-card">
+                        <div class="pdf-title">Subiectul III - Problema 2</div>
+                        <p>Gaz ideal diatomic, transformări izobară și izocoră</p>
+                        <a href="pdf/fizica/Test_Unic_Fizica_Subiectul_III_2_fara_diacritice.pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                    <div class="pdf-card">
+                        <div class="pdf-title">Subiectul III - Problema 3</div>
+                        <p>Gaz monoatomic, transformări izotermă și izobară, ciclu termodinamic</p>
+                        <a href="pdf/fizica/Test_Unic_Fizica_Subiectul_III_3_fara_diacritice.pdf" class="pdf-download" download>
+                            <i class="fas fa-download"></i> Descarcă PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Portal Teste Unice - Toate resursele educaționale într-un singur loc</p>
+            <p>© 2023 - Pentru utilizare educațională non-comercială</p>
+        </div>
+    </footer>
+
+    <script>
+        // Funcții JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigare între secțiuni
+            const navBtns = document.querySelectorAll('.nav-btn');
+            const sections = document.querySelectorAll('.materie-section');
+            
+            // Setează primul buton ca activ
+            navBtns[0].classList.add('active');
+            
+            // Funcție pentru scroll la secțiune
+            window.scrollToSection = function(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    // Actualizează butoanele active
+                    navBtns.forEach(btn => btn.classList.remove('active'));
+                    event.target.classList.add('active');
+                    
+                    // Scroll la secțiune
+                    window.scrollTo({
+                        top: section.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            };
+            
+            // Schimbă butoanele active la scroll
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('onclick').includes(current)) {
+                        btn.classList.add('active');
+                    }
+                });
+            });
+            
+            // Simulează descărcarea PDF-urilor (pentru demo)
+            document.querySelectorAll('.pdf-download').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!this.href.includes('pdf/')) {
+                        e.preventDefault();
+                        alert('Pentru versiunea completă, încarcă fișierele PDF în folderul pdf/\n\nStructura:\n- pdf/matematica/\n- pdf/informatica/\n- pdf/engleza/\n- pdf/fizica/');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
